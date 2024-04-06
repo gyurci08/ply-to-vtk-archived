@@ -2,17 +2,15 @@ BEGIN{
 
 }
 
-# Loop
+# AWK loop
 
-/^element vertex/ { vertices = $3 }
-/^element face/ { faces = $3 }
+/^ply/ {format = $1}																# Loading the format of the file
+/^element vertex/ { vertices = $3 }													# The number of vertices
+/^element face/ { faces = $3 }														# The number of faces
 
-{
+(format == "ply"){
 	if ($1 == "end_header")
 		{
-			#getline;
-			#printf("Vertices: %d, Faces: %d\n", vertices, faces);
-
 			printf("# vtk DataFile Version 2.0\nASCII\nDATASET POLYDATA\n");
 			printf("POINTS %d float\n",vertices);
 
@@ -20,11 +18,7 @@ BEGIN{
 			while (i<vertices)
 			{
 				getline;
-				if ($0 == "" || $0 == "#")
-				{
-					# Nothing
-				}
-				else
+				if (!/^#/ && NF > 0)												# Checking if line is empty or commented
 				{
 					print $1, $2, $3;
 					i++;
@@ -33,20 +27,17 @@ BEGIN{
 	
 			printf("POLYGONS %d 3\n", faces);
 
-			i = 0;
-         	while (i<faces)
+            i = 0;
+            while (i<faces)
             {
                 getline;
-                if ($0 == "")
-                {
-                    # Nothing
-                }
-                else
+                if (!/^#/ && NF > 0)                                                # Checking if line is empty or commented
                 {
                     print $1, $2, $3;
                     i++;
                 }
             }
+
 
 
 			exit;

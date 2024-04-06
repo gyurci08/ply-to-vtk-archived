@@ -12,8 +12,9 @@ end_header                 { delimits the end of the header }
 0.0 1.0 0.0
 1.0 0.0 0.0
 1.0 1.0 0.0
-#
+#This is a comment
 2.0 1.0 0.0
 0 1 2 3                  { start of face list }
 7 6 5 4
+
 0 4 5 1
