@@ -13,27 +13,43 @@ BEGIN{
 			#getline;
 			#printf("Vertices: %d, Faces: %d\n", vertices, faces);
 
-			printf("# vtk DataFile Version 2.0\n");
-			printf("ASCII\n");
-			printf("DATASET POLYDATA\n");
+			printf("# vtk DataFile Version 2.0\nASCII\nDATASET POLYDATA\n");
 			printf("POINTS %d float\n",vertices);
 
-			for (i=0; i<vertices;i++)
+			i = 0;
+			while (i<vertices)
 			{
 				getline;
-				print $1, $2, $3;
+				if ($0 == "" || $0 == "#")
+				{
+					# Nothing
+				}
+				else
+				{
+					print $1, $2, $3;
+					i++;
+				}
 			}
 	
 			printf("POLYGONS %d 3\n", faces);
 
-            for (i=0; i<faces;i++)
+			i = 0;
+         	while (i<faces)
             {
                 getline;
-                print $1, $2, $3;
+                if ($0 == "")
+                {
+                    # Nothing
+                }
+                else
+                {
+                    print $1, $2, $3;
+                    i++;
+                }
             }
 
 
-			
+			exit;
 		}
 }
 
