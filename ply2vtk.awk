@@ -15,7 +15,7 @@ BEGIN{
     i = 0;
     while (i<vertices)
     {
-        getline;
+        getline;																	# Moves on the next line
         if (!/^#/ && NF > 0)                                                        # Checking if line is empty or commented
             {
                 print $1, $2, $3;
