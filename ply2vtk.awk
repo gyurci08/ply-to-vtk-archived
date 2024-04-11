@@ -1,8 +1,8 @@
 BEGIN{
-
+# Initialize: Runs once on startup
 }
 
-# AWK loop
+# Loop:
 
 /^ply/ {format = $1}																# Loading the format of the file
 /^element vertex/ { vertices = $3 }													# The number of vertices
@@ -44,5 +44,5 @@ BEGIN{
 
 
 END{
-
+# End: Runs once on exit
 }
