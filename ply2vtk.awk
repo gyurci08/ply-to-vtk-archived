@@ -24,7 +24,7 @@ BEGIN{
     }
 
 	
-	printf("POLYGONS %d 3\n", faces);
+	printf("POLYGONS %d 3\n", faces);												# The number "3" is there, because this program is for triangles
 
     i = 0;
     while (i<faces)
@@ -39,7 +39,7 @@ BEGIN{
 
 
 
-	exit;
+	exit;																			# Exiting after values printed
 }
 
 
