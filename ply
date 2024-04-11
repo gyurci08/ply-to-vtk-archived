@@ -5,16 +5,16 @@ property float32 x         { vertex contains float "x" coordinate }
 property float32 y         { y coordinate is also a vertex property }
 property float32 z         { z coordinate, too }
 element face 3             { there are 3 "face" elements in the file }
-property list uint8 int32 vertex_index
-                           { "vertex_indices" is a list of ints }
-end_header                 { delimits the end of the header }
-0.0 0.0 0.0
-0.0 1.0 0.0
-1.0 0.0 0.0
-1.0 1.0 0.0
-#This is a comment
-2.0 1.0 0.0
-0 1 2 3                  { start of face list }
-7 6 5 4
+# This format is NOT indexed!
 
-0 4 5 1
+end_header                 { delimits the end of the header }
+# Vertices
+1.0 1.0 0.0
+2.0 2.0 0.0
+3.0 1.0 0.0
+3.0 3.0 0.0
+5.0 2.0 0.0
+# Faces; Not indexed!
+1 2 3
+2 3 4
+3 4 5
